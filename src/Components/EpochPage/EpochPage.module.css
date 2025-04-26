@@ -1,0 +1,77 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    border-top: 2px solid var(--gray);
+    padding: 90px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page h1{
+    font-size: 40px;
+    text-align: center;
+    padding: 0 5px;
+}
+
+
+.container{
+    background-color: var(--back-color);
+    border: var(--stroke-width) solid var(--gray);
+    border-radius: 15px;
+    padding: 44px;
+    max-width: 950px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 90%;
+}
+
+.h2{
+    margin-bottom: 10px;
+}
+
+.container p{
+    text-align: justify;
+}
+
+.works{
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.work {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+}
+
+.title{
+    padding-left: 20px;
+    line-height: normal;
+}
+
+.work a{
+    text-indent: initial;
+}
+  
+.dots {
+    flex-grow: 1;
+    border-bottom: 2px dotted #000;
+    margin: 0 10px;
+    height: 1px;
+}
+
+h3{
+    font-size: 28px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .container{
+        padding: 20px;
+        width: 95%;
+    }
+}

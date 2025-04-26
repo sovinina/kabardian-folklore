@@ -1,0 +1,153 @@
+.main{
+    border-top: var(--stroke-width) solid var(--gray);
+    gap: 40px;
+    padding: 90px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.main form p{
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.search{
+    border: var(--stroke-width) solid var(--gray);
+    background-color: var(--back-accent);
+    padding: 8px 20px;
+    border-radius: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg width='49' height='49' viewBox='0 0 49 49' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M49 24.5C49 38.031 38.031 49 24.5 49C10.969 49 0 38.031 0 24.5C0 10.969 10.969 0 24.5 0C38.031 0 49 10.969 49 24.5Z' fill='%2368780B'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.7172 10.0966C24.8347 9.2924 30.4459 13.5997 31.2501 19.7172C31.6152 22.4952 30.9264 25.1688 29.4925 27.3353L38.6461 36.2467C39.2397 36.8246 39.2524 37.7743 38.6745 38.3678C38.0966 38.9614 37.147 38.9742 36.5534 38.3963L27.5144 29.5964C25.913 30.9948 23.8954 31.9521 21.6294 32.25C15.5119 33.0542 9.90081 28.7469 9.09662 22.6294C8.29244 16.5119 12.5997 10.9008 18.7172 10.0966ZM19.1082 13.071C23.583 12.4828 27.6874 15.6334 28.2756 20.1082C28.8639 24.583 25.7132 28.6874 21.2384 29.2756C16.7637 29.8638 12.6593 26.7132 12.071 22.2384C11.4828 17.7636 14.6335 13.6592 19.1082 13.071Z' fill='%23FFF3E4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 40px 40px;
+}
+
+.check{
+    width: 20px;
+    
+}
+
+.customCheckbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    gap: 8px;
+}
+
+.customCheckbox input {
+    display: none; 
+}
+
+.customCheckbox .checkmark {
+    width: 20px;
+    height: 20px;
+    background-color: var(--back-accent);
+    border: var(--stroke-width) solid var(--gray);
+    border-radius: 4px;
+    position: relative;
+    transition: 0.2s;
+}
+
+.customCheckbox input:checked + .checkmark {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.customCheckbox .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--back-color);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.customCheckbox input:checked + .checkmark::after {
+    display: block;
+}
+.periodSelect{
+    appearance: none; /* Убираем системный стиль */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: var(--stroke-width) solid var(--gray);
+    border-radius: 6px;
+    background-color: var(--back-accent);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 11'%3E%3Cpath d='M2.99.87c-.62-.55-1.57-.49-2.12.13s-.49 1.57.13 2.12L9.01 10.13a1.6 1.6 0 0 0 2.64 0l8-7c.62-.55.69-1.5.13-2.12s-1.5-.69-2.12-.13l-7.18 6.29L2.99.87z' fill='%235A626E'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+    cursor: pointer;
+}
+
+.list{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.list h3{
+    margin-bottom: 5px;
+    line-height: normal;
+}
+
+.list li{
+    padding: 20px;
+    border-radius: 15px;
+    border: var(--stroke-width) solid var(--gray);
+}
+
+.list li a{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: fit-content;
+
+}
+
+.circle{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    height: 24px;
+    background-color: var(--green);
+    border-radius: 100%;
+    border: none;
+    transition: all ease-in 0.1s;
+}
+
+.section{
+    max-width: 700px;
+    place-items: center;
+}
+
+.btn{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.list li a:hover{
+    color: inherit
+}
+
+.list li a:hover .circle{
+    background-color: var(--green-hover);
+}

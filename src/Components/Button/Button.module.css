@@ -1,0 +1,53 @@
+.btn{
+    border-radius: 50px;
+    border: var(--stroke-width) solid var(--gray);
+    padding: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    cursor: pointer;
+    width: 330px;
+}
+
+.btn:hover .circle{
+    background-color: var(--green-hover);
+}
+
+.btn span{
+    padding: 0 10px;
+}
+
+.circle{
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--green);
+    border-radius: 100%;
+    border: none;
+    transition: all ease-in 0.1s;
+}
+
+.mirrored{
+    transform: scaleX(-1);
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    gap: 20px;
+}
+
+.back{
+    width: fit-content
+}
+
+@media screen and (max-width: 770px) {
+    .btns{
+        flex-direction: column;
+        align-items: center;
+    }
+}

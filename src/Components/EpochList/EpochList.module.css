@@ -1,0 +1,97 @@
+.imgContainer{
+    /* max-height: 590px; */
+    height:40vh;
+    background-image: url('../../assets/imgs/elbrus.png');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.shape{
+    clip-path: path("M14 15H0C7.72533 15 13.988 8.28426 13.988 0H14V15Z");
+    width: 13px;
+    height: 14px;
+    background-color: var(--back-color);
+    
+}
+
+.shape:last-child{
+    transform: scaleX(-1);
+}
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px 15px 0 0;
+    max-width: 774px;
+    width: 90vw;
+    height: 66px;
+    background-color: var(--back-color);
+}
+
+.container{
+    display: flex;
+    align-items: end;
+}
+
+.main{
+    padding: 90px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a{
+    transition: color ease-in 0.1s;
+}
+
+a:hover{
+    color: rgb(121, 102, 75);
+}
+
+.line:first-child, .line:last-child{
+    height: 110px;
+}
+
+.line:first-child{
+    border-radius: 5px 5px 0 0;
+}
+
+.line:last-child{
+    border-radius: 0 0 5px 5px;
+}
+
+.line{
+    width: 3px;
+    height: 150px;
+    background-color: var(--gray);
+}
+
+@media screen and (max-width: 660px) {
+    /* .nav a:last-child{
+        display: none;
+    } */
+    .nav{
+        width: fit-content;
+        padding: 0px 20px 0 20px;
+        column-gap: 19px;
+        row-gap: 5px;
+        padding: 15px;
+        flex-wrap: wrap;
+    }
+    .line{
+        width: 3px;
+        height: 100px;
+        background-color: var(--gray);
+    }
+    .line:first-child, .line:last-child{
+        height: 60px;
+    }
+    .main{
+        padding: 40px 0;
+    }
+}
+
