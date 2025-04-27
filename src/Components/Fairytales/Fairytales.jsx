@@ -55,12 +55,12 @@ window.scrollTo(0, 0);
 class Fairytales extends React.Component {
   constructor(props) {
     super(props);
-
+    
     const savedPage = localStorage.getItem('page');
-    const initialPage = savedPage ? parseInt(savedPage, 10) : 0;
+    
 
     this.state = {
-      page: 0,
+      page: savedPage,
       totalPage: 47,
       isLoading: true,
     };
@@ -112,7 +112,7 @@ class Fairytales extends React.Component {
           isLoading: false,
         });
       }
-    }, 900); // 300ms — время на инициализацию FlipBook 
+    }, 900); 
   }
   
 
