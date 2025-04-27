@@ -55,18 +55,15 @@ window.scrollTo(0, 0);
 class Fairytales extends React.Component {
   constructor(props) {
     super(props);
-    
-    const savedPage = localStorage.getItem('page');
-    
-
+    const saved = parseInt(localStorage.getItem("page") ?? "0", 10);
     this.state = {
-      page: savedPage,
+      page: saved,
       totalPage: 47,
       isLoading: true,
     };
 
     // Если нужно использовать класс-реф, можно также создать его так:
-    this.flipBookRef = React.createRef();
+    this.flipBook = React.createRef();
   }
   
   // Если не используете, можно задать:
@@ -85,36 +82,34 @@ class Fairytales extends React.Component {
     }
   };
 
-  flipTo = (page) => {
-    if (this.flipBook && typeof this.flipBook.pageFlip === "function") {
-      this.flipBook.pageFlip().flip(page);
-    }
+  handleInit = () => {
+    const inst = this.flipBook.current.pageFlip();
+    this.setState({
+      totalPage: inst.getPageCount(),
+      isLoading: false,
+    });
+
+  };
+
+  onFlip = (e) => {
+    // Сохраняем текущую страницу и отворачиваем скролл
+    const currentPage = e.data;
+    window.scrollTo(0, 0);
+    this.setState({ page: currentPage });
+    localStorage.setItem("page", currentPage.toString());
+  };
+
+  flipTo = (pageNumber) => {
+    // pageNumber уже должен быть 0-based
+    const inst = this.flipBook.current.pageFlip();
+    inst.flip(pageNumber);
   };
 
   onPage = (e) => {
     const currentPage = e.data;
     this.setState({ page: currentPage });
-    localStorage.setItem('page', currentPage.toString());
+    localStorage.setItem("page", currentPage.toString());
   };
-
-  componentDidMount() {
-    setTimeout(() => {
-      const flipBookInstance = this.flipBook?.pageFlip?.();
-      if (flipBookInstance) {
-        const savedPage = localStorage.getItem("page");
-        if (savedPage !== null) {
-          const page = parseInt(savedPage, 10)-1;
-          flipBookInstance.flip(page, "top");
-        }
-  
-        this.setState({
-          totalPage: flipBookInstance.getPageCount(),
-          isLoading: false,
-        });
-      }
-    }, 900); 
-  }
-  
 
   
   render() {
@@ -145,6 +140,7 @@ class Fairytales extends React.Component {
             <a href="Кабардинские народные сказки.pdf" download>Скачать сборник</a>
         </div>
         <HTMLFlipBook
+          startPage={this.state.page}
           width={537}
           height={758}
           size="stretch"
@@ -155,11 +151,15 @@ class Fairytales extends React.Component {
           maxShadowOpacity={0.5}
           showCover={true}
           mobileScrollSupport={true}
-          onFlip={this.onPage}
+          onInit={this.handleInit}
+          onFlip={(e) => {
+            window.scrollTo(0, 0);
+            this.onPage(e);
+          }}
           onChangeOrientation={this.onChangeOrientation}
           onChangeState={this.onChangeState}
           className="demo-book"
-          ref={(el) => (this.flipBook = el)}
+          ref={this.flipBook}
         >
           <PageCover><img src='/img/Cover.png' alt="" /></PageCover>
           <Page></Page>
