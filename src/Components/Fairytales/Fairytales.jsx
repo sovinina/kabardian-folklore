@@ -2,26 +2,6 @@ import HTMLFlipBook from "react-pageflip";
 import './Fairytales.css';
 import React from "react";
 
-// const Page = (index) => {
-//     let src;
-//     switch (index.index){
-//         case 3:
-//         case 29:
-//         case 19:
-//         case 24:
-//         case 30:
-//         case 33:
-//             src =`img/gif/Сказки-${index.index}.gif`;
-//             break;
-//         default:
-//             src =`img/страницы/Сказки-${index.index}.png`;
-//     } 
-//     console.log(index.index)
-//     return (
-//     <div className="page">
-//         <img src={src} alt="" />
-//     </div>
-// )}
 let imagePaths = [];
 
 for (let i =1;i<47;i++){
@@ -41,61 +21,6 @@ for (let i =1;i<47;i++){
 
 }
 
-// const imagePaths = [
-//     'img/страницы/Сказки-1.png',
-//     'img/страницы/Сказки-2.png',
-//     'img/страницы/Сказки-3.png',
-//     // и так далее
-// ];
-
-
-
-// const Page = ({ src, index }) => (
-//     <div className="page" key={index}>
-//       <img src={src} alt={`Page ${index + 1}`} style={{ width: '100%', height: '100%' }} />
-//     </div>
-//   );
-
-// const Fairytales = (props) => {
-//     // const count = 47;
-//     // const pages = imagePaths.map((src, index) => (
-//     //     <Page key={index} src={src} index={index} />
-//     // ))
-
-//     return (
-//         <HTMLFlipBook 
-//             width={580} 
-//             height={820}
-//             maxWidth={300} 
-//             maxHeight={600}
-//         >
-            
-//             <div className="page page-cover" data-density="hard">
-//                 <div className="page-content">
-//                     <img src="/img/Cover.png" alt="" />
-//                 </div>
-//             </div>
-//             <div className="page">
-                
-//             </div>
-//             {imagePaths.map((src, index) => (
-//                 <div className="page" key={index}>
-//                     <div className="page-content">
-//                         <img src={src} alt="" />
-//                     </div>
-//                 </div>
-//             ))}
-
-//             <div className="page">
-//             </div>
-//             <div className="page page-cover"  data-density="hard">
-//                 <div className="page-content">
-//                     <img src="/img/Back.png" alt="" />
-//                 </div>
-//             </div>
-//         </HTMLFlipBook>
-//     );
-// }
 const contents = [
     "Предисловие", "Лашин", "Разумная сноха", "Глупый волк", 
     "Козёл и волк", "Куйцук и иныжи", "Малыш Кулацу", "Чудесная цапля",
@@ -131,6 +56,9 @@ class Fairytales extends React.Component {
   constructor(props) {
     super(props);
 
+    const savedPage = localStorage.getItem('page');
+    const initialPage = savedPage ? parseInt(savedPage, 10) : 0;
+
     this.state = {
       page: 0,
       totalPage: 47,
@@ -164,10 +92,9 @@ class Fairytales extends React.Component {
   };
 
   onPage = (e) => {
-    localStorage.setItem('page', e.data)
-    this.setState({
-      page: e.data,
-    });
+    const currentPage = e.data;
+    this.setState({ page: currentPage });
+    localStorage.setItem('page', currentPage.toString());
   };
 
   componentDidMount() {
@@ -185,7 +112,7 @@ class Fairytales extends React.Component {
           isLoading: false,
         });
       }
-    }, 700); // 300ms — время на инициализацию FlipBook 
+    }, 900); // 300ms — время на инициализацию FlipBook 
   }
   
 

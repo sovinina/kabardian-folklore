@@ -3,13 +3,28 @@ import { Button } from '../Button/Button';
 import styles from './Work.module.css';
 import { useGetWorksQuery } from '../../Services/worksApi';
 import { Loading } from '../Loading/Loading';
+import { useEffect, useState } from 'react';
+
 
 
 export const Work = () =>{
     const { id }= useParams();
     const { data: works, error, isLoading } = useGetWorksQuery();
     
-    if (isLoading) return <Loading />;
+    const [showTimeoutMessage, setShowTimeoutMessage] = useState(false);
+    useEffect(() => {
+        let timeout;
+        if (isLoading) {
+            timeout = setTimeout(() => {
+                setShowTimeoutMessage(true);
+            }, 5000);
+        } else {
+            setShowTimeoutMessage(false);
+        }
+        return () => clearTimeout(timeout);
+    }, [isLoading]);
+
+    if (isLoading) return <Loading showTimeoutMessage={showTimeoutMessage} />;
 
     if (error) return <p>Ошибка при загрузке данных</p>;
     
@@ -22,7 +37,7 @@ export const Work = () =>{
                 <div>
                     {
                         work.content.split('\n')
-                        .map(line => (<p key={line}>{line}</p>))
+                        .map((line, i) => (<p key={i}>{line}</p>))
                     }
                 </div>
                 

@@ -45,11 +45,12 @@
 }
 
 a{
-    transition: color ease-in 0.1s;
+    transition: all ease-in 0.1s;
 }
 
 a:hover{
-    color: rgb(121, 102, 75);
+    color: #79664b;
+    border-color: #79664b;
 }
 
 .line:first-child, .line:last-child{

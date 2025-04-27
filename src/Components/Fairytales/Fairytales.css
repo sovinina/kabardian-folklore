@@ -1,17 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Alice&family=Rubik:wght@300..900&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: "Alice", serif;
-    line-height: 1.5;
+    line-height: 1.3;
     color: #292d31;
     text-align: left;
-}
-
-#root{
-    overflow: hidden;
 }
 
 .wrapper {
@@ -188,10 +181,6 @@ ul {
     background-color: rgba(0, 0, 0, 0.16);
 }
 
-html::-webkit-scrollbar {
-    width: 1px;
-}
-
 .demoPage{
     background-color: white;
 }
@@ -222,36 +211,6 @@ html::-webkit-scrollbar {
     display: block;
 }
 
-.preloader{
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--back-color);
-    z-index: 10;
-}
-
-.loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid var(--gray);
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    }
-
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-    } 
 
 .collection{
     padding: 0;

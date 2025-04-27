@@ -3,11 +3,16 @@ footer{
     padding: 40px;
 }
 
+footer a{
+    border-bottom: 2px #f8e0c273 solid;
+    width: fit-content;
+}
+
 .container{
     padding: 50px;
     background-color:var(--footer-secondary);
     display: flex;
-    column-gap: 80px;
+    flex-direction: column;
     row-gap: 30px;
     border-radius: 15px;
 }
@@ -16,14 +21,34 @@ footer{
     display: flex;
     flex-direction: column;
     min-width: 240px;
-    justify-content: space-between;
     gap: 8px;
 }
+
+.links, .epochs{
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.cont {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 176px   ;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.links { grid-area: 1 / 1 / 2 / 2; }
+.epochs { grid-area: 1 / 2 / 2 / 3; }
+.contacts { grid-area: 2 / 1 / 3 / 2; }
+.contact { grid-area: 2 / 2 / 3 / 3; }
+.about { grid-area: 1 / 3 / 3 / 5; }
+
 .about{
     gap: 20px;
     max-width: 800px;
     width: 90%;
 }
+
 .linkBiger{
     font-size:32px;
     line-height: normal;
@@ -33,19 +58,62 @@ footer{
     color: var(--back-color)
 }
 
-@media screen and (max-width: 600px) {
-    footer{
-        padding: 20px;
-    }
-
-    .container{
-        padding: 20px;
-        flex-wrap: wrap;
-    }
+.contacts p:first-child{
+    font-size:32px;
 }
 
-@media screen and (max-width: 1200px) {
-    .container{
-        flex-wrap: wrap;
+.contact a{
+    color: var(--back-color);
+    height: fit-content;
+}
+
+.contact a:hover{
+    color: #79664b;
+}
+
+.copyrights{
+    font-size: 18px;
+    color: #a39889;
+}
+
+
+@media screen and (max-width: 900px) {
+    .cont {
+        grid-template-columns: repeat(2, 1fr);
     }
+    .about { grid-area: 3 / 1 / 3 / 5; }
+}
+
+@media screen and (max-width: 600px) {
+    footer, .container{
+        padding: 20px;
+    }
+
+    .cont {
+        grid-template-columns: 1fr;
+    }
+    .links { grid-area: 1 / 1 / 2 / 2; }
+    .epochs { grid-area: 2 / 1 / 3 / 2; }
+    .contacts{ grid-area: 3 / 1 / 4 / 2; }
+    .contact { 
+        grid-area:4 / 1 / 5 / 2; 
+        transform: translateY(-20px);
+    }
+    .about { grid-area: 5 / 1 / 6 / 2; }
+}
+
+@media screen and (max-width: 400px) {
+    footer, .container{
+        padding: 20px;
+    }
+
+    .cont {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6);
+    }
+    .links { grid-area: 1 / 1 / 2 / 2; }
+    .epochs { grid-area: 2 / 1 / 3 / 2; }
+    .contacts{ grid-area: 3 / 1 / 4 / 2; }
+    .contact { grid-area: 4 / 1 / 5 / 2;  }
+    .about { grid-area: 5 / 1 / 6 / 2; }
 }

@@ -4,7 +4,7 @@ import { Button } from '../Button/Button';
 import { useGetWorksQuery } from "../../Services/worksApi";
 import { Link } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
-
+import { useEffect, useState } from "react";
 
 export const EpochPage = ({ id }) => {
     const epoch = epochs.find(epoch => epoch.id === id);
@@ -16,9 +16,23 @@ export const EpochPage = ({ id }) => {
     }
     window.scrollTo(0, 0);
 
-    const { data: works, error, isLoading } = useGetWorksQuery();
 
-    if (isLoading) return <Loading />;
+    const { data: works, error, isLoading } = useGetWorksQuery();
+    
+    const [showTimeoutMessage, setShowTimeoutMessage] = useState(false);
+    useEffect(() => {
+        let timeout;
+        if (isLoading) {
+            timeout = setTimeout(() => {
+                setShowTimeoutMessage(true);
+            }, 5000);
+        } else {
+            setShowTimeoutMessage(false);
+        }
+        return () => clearTimeout(timeout);
+    }, [isLoading]);
+
+    if (isLoading) return <Loading showTimeoutMessage={showTimeoutMessage} />;
 
     if (error) return <p>Ошибка при загрузке данных</p>;
 

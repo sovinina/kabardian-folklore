@@ -8,6 +8,8 @@
   --back-accent: #fff9f2;
   --stroke-width:2px;
 
+  overflow-x: hidden;
+
   background-color: var(--back-color);
 
   scroll-behavior: smooth;
@@ -43,4 +45,47 @@ main{
 
 footer{
   margin-top: auto;
+}
+
+.preloader{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--back-color);
+  z-index: 10;
+  gap: 20px;
+  padding: 20px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--gray);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+} 
+.timeout-message{
+  border: var(--stroke-width) solid var(--gray);
+  border-radius: 10px;
+  padding: 20px;
+}
+.timeout-message p{
+  text-align: center;
+  max-width: 450px;
 }
