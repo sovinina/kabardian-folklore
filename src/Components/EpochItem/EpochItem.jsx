@@ -5,7 +5,7 @@ export const EpochItem = ({epoch}) => {
     return(
         <div id={epoch.htmlId} className={styles.container}>
             <div className={styles.textContent}>
-                <img src={epoch.img} className={styles.mobileImg} alt="" />
+                <img src={epoch.img} className={styles.mobileImg} alt='Иллюстрация к эпохе' />
                 <h2>{epoch.title}</h2>
                 <p>{epoch.shorttext}</p>
             </div>

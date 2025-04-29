@@ -16,7 +16,7 @@ for (let i =1;i<47;i++){
             imagePaths.push(`img/gif/Сказки-${i}.gif`);
             break;
         default:
-            imagePaths.push(`img/страницы/Сказки-${i}.png`);
+            imagePaths.push(`img/страницы/Сказки-${i}.webp`);
     }
 
 }
@@ -51,7 +51,6 @@ const Page = React.forwardRef((props, ref) => {
     </div>
   );
 });
-window.scrollTo(0, 0);
 class Fairytales extends React.Component {
   constructor(props) {
     super(props);
@@ -88,13 +87,12 @@ class Fairytales extends React.Component {
       totalPage: inst.getPageCount(),
       isLoading: false,
     });
-
+    window.scrollTo(0, 0);
   };
 
   onFlip = (e) => {
     // Сохраняем текущую страницу и отворачиваем скролл
     const currentPage = e.data;
-    window.scrollTo(0, 0);
     this.setState({ page: currentPage });
     localStorage.setItem("page", currentPage.toString());
   };
@@ -111,7 +109,6 @@ class Fairytales extends React.Component {
     localStorage.setItem("page", currentPage.toString());
   };
 
-  
   render() {
     return (
         <>
@@ -153,7 +150,6 @@ class Fairytales extends React.Component {
           mobileScrollSupport={true}
           onInit={this.handleInit}
           onFlip={(e) => {
-            window.scrollTo(0, 0);
             this.onPage(e);
           }}
           onChangeOrientation={this.onChangeOrientation}
